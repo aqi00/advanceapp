@@ -1,0 +1,46 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="5dp">
+
+    <!-- 注意SwipeRefreshLayout要使用全路径 -->
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/srl_dynamic"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <!-- 注意RecyclerView要使用全路径 -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_dynamic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_seq"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:text="正在加载更多文章" />
+
+        <ProgressBar
+            android:id="@+id/pb_loading"
+            style="@style/Base.Widget.AppCompat.ProgressBar"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+
+    </LinearLayout>
+
+</LinearLayout>
