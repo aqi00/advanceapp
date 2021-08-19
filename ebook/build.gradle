@@ -1,0 +1,85 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.example.ebook"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+
+        // 此处说明mk文件未能指定的编译参数
+        externalNativeBuild {
+            ndkBuild {
+                // 本模块有三个有效目标，分别是vudroid、mupdf和djvudroid，但只有vudroid能够编译出so文件
+                //targets "vudroid"
+                // 此处的Application.mk没什么作用
+                //arguments "NDK_APPLICATION_MK:=src/main/jni/Application.mk"
+                // 说明需要生成哪些处理器的so文件
+                // NDK的r17版本开始不再支持ARM5(armeabi)、MIPS、MIPS64这几种so编译
+                //abiFilters "armeabi", "armeabi-v7a"
+                abiFilters "arm64-v8a", "armeabi-v7a", "x86"
+                // 指定C++编译器的版本，比如下面这行用的是C++11
+                //cppFlags "-std=c++11"
+            }
+        }
+    }
+
+    // 下面指定拾取的第一个so库路径，编译时才不会重复链接
+    packagingOptions {
+        pickFirst 'lib/arm64-v8a/libcommon.so'
+        pickFirst 'lib/armeabi-v7a/libcommon.so'
+        pickFirst 'lib/x86/libcommon.so'
+        pickFirst 'lib/arm64-v8a/libvudroid.so'
+        pickFirst 'lib/armeabi-v7a/libvudroid.so'
+        pickFirst 'lib/x86/libvudroid.so'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    // 此处指定mk文件的路径
+    externalNativeBuild {
+//        // 下面使用ndkBuild方式编译
+//        ndkBuild {
+//            // 下面是获取指令集和加解密的mk文件
+//            //path "src/main/jni/Android.mk"
+//            //path file('src/main/jni/Android.mk')
+//            // 下面是编译vudroid专用的mk文件
+//            path "src/main/jni/Android_vudroid.mk"
+//        }
+        // 下面使用cmake方式编译
+        cmake {
+            path file('src/main/jni/CMakeLists.txt')
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    testImplementation 'junit:junit:4.13'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    // room库各版本见 https://mvnrepository.com/artifact/androidx.room/room-runtime
+    implementation 'androidx.room:room-runtime:2.3.0'
+    annotationProcessor 'androidx.room:room-compiler:2.3.0'
+
+}
