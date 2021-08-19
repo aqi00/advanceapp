@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.picture">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".CardViewActivity" />
+        <activity android:name=".ImageDecorateActivity" />
+        <activity android:name=".ImageRippleActivity" />
+        <activity android:name=".BitmapPixelActivity" />
+        <activity android:name=".BitmapChangeActivity" />
+        <activity android:name=".BitmapCutActivity" />
+        <activity android:name=".DrawableConvertActivity" />
+        <activity android:name=".DrawableCutActivity" />
+        <activity android:name=".DrawableTextActivity" />
+        <activity android:name=".DrawableIconActivity" />
+        <activity
+            android:name=".PurikuraActivity"
+            android:theme="@style/AppCompatTheme" />
+        <activity
+            android:name=".PortraitActivity"
+            android:theme="@style/AppCompatTheme" />
+    </application>
+
+</manifest>
