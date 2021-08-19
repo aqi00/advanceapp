@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="testRunner" value="PLATFORM" />
+        <option name="distributionType" value="LOCAL" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleHome" value="$PROJECT_DIR$/../../Android/gradle-6.7.1" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/animation" />
+            <option value="$PROJECT_DIR$/audio" />
+            <option value="$PROJECT_DIR$/ebook" />
+            <option value="$PROJECT_DIR$/event" />
+            <option value="$PROJECT_DIR$/face" />
+            <option value="$PROJECT_DIR$/iot" />
+            <option value="$PROJECT_DIR$/live" />
+            <option value="$PROJECT_DIR$/location" />
+            <option value="$PROJECT_DIR$/network" />
+            <option value="$PROJECT_DIR$/opencv" />
+            <option value="$PROJECT_DIR$/picture" />
+            <option value="$PROJECT_DIR$/threed" />
+            <option value="$PROJECT_DIR$/video" />
+            <option value="$PROJECT_DIR$/voice" />
+          </set>
+        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
