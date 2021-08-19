@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.video">
+    <!-- 存储卡读写 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+    <!-- 相机 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- 录音 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- 获取网络状态 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 互联网 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 悬浮窗 -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!-- 允许前台服务（Android 9.0之后需要） -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <application
+        android:name=".MainApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:preserveLegacyExternalStorage="true"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".CameraPhotoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppCompatTheme" />
+        <activity
+            android:name=".CameraRecordActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppCompatTheme" />
+        <activity
+            android:name=".VideoControllerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppCompatTheme" />
+        <activity
+            android:name=".Camera2PhotoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppCompatTheme" />
+        <activity
+            android:name=".Camera2RecordActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppCompatTheme" />
+        <activity android:name=".VideoDetailActivity" />
+        <activity android:name=".PhotoGridActivity" />
+        <activity android:name=".PhotoDetailActivity" />
+        <activity
+            android:name=".ExoPlayerActivity"
+            android:configChanges="screenLayout|orientation"
+            android:theme="@style/AppCompatTheme" />
+        <activity android:name=".VideoFrameActivity" />
+        <activity android:name=".FloatWindowActivity" />
+        <activity android:name=".ScreenCaptureActivity" />
+        <activity android:name=".ScreenRecordActivity" />
+        <activity
+            android:name=".ShortViewActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppCompatTheme" />
+        <activity
+            android:name=".ShortTakeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppCompatTheme" />
+        <activity
+            android:name=".ShortEditActivity"
+            android:theme="@style/AppCompatTheme" />
+        <activity
+            android:name=".ShortCoverActivity"
+            android:theme="@style/AppCompatTheme" />
+
+        <service android:name=".service.StockService" />
+        <service
+            android:name=".service.CaptureService"
+            android:foregroundServiceType="mediaProjection" />
+        <service
+            android:name=".service.RecordService"
+            android:foregroundServiceType="mediaProjection" />
+    </application>
+
+</manifest>
