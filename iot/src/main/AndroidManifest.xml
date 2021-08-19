@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.iot">
+    <!-- 震动 -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- 蓝牙 -->
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission
+        android:name="android.permission.BLUETOOTH_PRIVILEGED"
+        tools:ignore="ProtectedPermissions" />
+    <!-- 仅在支持BLE（即蓝牙4.0）的设备上运行 -->
+    <uses-feature
+        android:name="android.hardware.bluetooth_le"
+        android:required="true" />
+    <!-- 如果Android6.0 蓝牙搜索不到设备，需要补充下面两个权限 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- Android10之后，计步器需要健身运动权限 -->
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SensorActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="sensor" />
+        <activity android:name=".AccelerationActivity" />
+        <activity android:name=".DirectionActivity" />
+        <activity android:name=".StepActivity" />
+        <activity android:name=".LightActivity" />
+        <activity android:name=".GyroscopeActivity" />
+        <activity android:name=".BluetoothPairActivity" />
+        <activity android:name=".BluetoothA2dpActivity" />
+        <activity android:name=".BluetoothTransActivity" />
+        <activity android:name=".BleScanActivity" />
+        <activity android:name=".BleAdvertiseActivity" />
+        <activity android:name=".BleClientActivity" />
+        <activity android:name=".BleServerActivity" />
+        <activity android:name=".ScanCarActivity" />
+        <activity android:name=".SmartCarActivity" />
+    </application>
+
+</manifest>
