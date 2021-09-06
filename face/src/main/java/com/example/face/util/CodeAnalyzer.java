@@ -13,9 +13,7 @@ public class CodeAnalyzer {
     public static List<Bitmap> splitImage(Bitmap origin) {
         Log.d(TAG, "getWidth="+origin.getWidth()+", getHeight="+origin.getHeight());
         Bitmap bitmap = origin;
-        if (bitmap.getWidth() <= 200) {
-            bitmap = BitmapUtil.getScaleBitmap(bitmap, 1.5);
-        }
+        bitmap = BitmapUtil.getScaleBitmap(bitmap, 300.0/bitmap.getWidth());
         List<Bitmap> bitmapList = new ArrayList<>();
         bitmapList.add(Bitmap.createBitmap(bitmap, 32, 13, 39, 55));
         bitmapList.add(Bitmap.createBitmap(bitmap, 95, 13, 39, 55));

@@ -19,6 +19,7 @@ import com.example.face.util.CodeAnalyzer;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -162,6 +163,15 @@ public class VerifyCodeActivity extends AppCompatActivity {
         String number = CodeAnalyzer.getNumber(bitmap); // 从验证码位图获取验证码数字
         iv_code.setImageBitmap(bitmap);
         tv_code.setText("自动识别得到的验证码是："+number);
+//        List<Bitmap> bitmapList = CodeAnalyzer.splitImage(bitmap);
+//        ImageView iv1 = findViewById(R.id.iv1);
+//        ImageView iv2 = findViewById(R.id.iv2);
+//        ImageView iv3 = findViewById(R.id.iv3);
+//        ImageView iv4 = findViewById(R.id.iv4);
+//        iv1.setImageBitmap(bitmapList.get(0));
+//        iv2.setImageBitmap(bitmapList.get(1));
+//        iv3.setImageBitmap(bitmapList.get(2));
+//        iv4.setImageBitmap(bitmapList.get(3));
     }
 
 }
