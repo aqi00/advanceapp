@@ -125,6 +125,9 @@ public class PortraitActivity extends AppCompatActivity implements SeekBar.OnSee
         sb_horizontal.setProgress(50); // 设置拖动条的当前进度
         sb_vertical.setProgress(50); // 设置拖动条的当前进度
         Bitmap bitmap = bv_photo.getDrawingCache(); // 从绘图缓存获取位图对象
+        if (bitmap == null) {
+            return;
+        }
         int width = bitmap.getWidth(), height = bitmap.getHeight();
         civ_photo.setOrigBitmap(bitmap); // 设置裁剪视图的原始位图
         // 设置位图的矩形边界
