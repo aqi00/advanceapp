@@ -25,7 +25,7 @@ import okhttp3.Response;
 public class OkhttpDownloadActivity extends AppCompatActivity {
     private final static String TAG = "OkhttpDownloadActivity";
     private final static String URL_IMAGE = "https://img-blog.csdnimg.cn/2018112123554364.png";
-    private final static String URL_APK = "http://3g.lenovomm.com/w3g/yydownload/com.ss.android.article.lite/60020";
+    private final static String URL_APK = "https://ptgl.fujian.gov.cn:8088/masvod/public/2021/03/19/20210319_178498bcae9_r38.mp4";
     private TextView tv_result; // 声明一个文本视图对象
     private TextView tv_progress; // 声明一个文本视图对象
     private ImageView iv_result; // 声明一个图像视图对象
