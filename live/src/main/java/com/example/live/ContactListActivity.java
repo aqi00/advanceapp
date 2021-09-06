@@ -58,19 +58,23 @@ public class ContactListActivity extends AppCompatActivity implements AdapterVie
         // 开始监听好友上线事件
         mSocket.on("friend_online", (args) -> {
             String friend_name = (String) args[0];
-            // 把刚上线的好友加入联系人列表
-            mContactMap.put(friend_name, new EntityInfo(friend_name, "好友"));
-            mContactList.clear();
-            mContactList.addAll(mContactMap.values());
-            runOnUiThread(() -> mAdapter.notifyDataSetChanged());
+            if (friend_name != null) {
+                // 把刚上线的好友加入联系人列表
+                mContactMap.put(friend_name, new EntityInfo(friend_name, "好友"));
+                mContactList.clear();
+                mContactList.addAll(mContactMap.values());
+                runOnUiThread(() -> mAdapter.notifyDataSetChanged());
+            }
         });
         // 开始监听好友下线事件
         mSocket.on("friend_offline", (args) -> {
             String friend_name = (String) args[0];
-            mContactMap.remove(friend_name); // 从联系人列表移除已下线的好友
-            mContactList.clear();
-            mContactList.addAll(mContactMap.values());
-            runOnUiThread(() -> mAdapter.notifyDataSetChanged());
+            if (friend_name != null) {
+                mContactMap.remove(friend_name); // 从联系人列表移除已下线的好友
+                mContactList.clear();
+                mContactList.addAll(mContactMap.values());
+                runOnUiThread(() -> mAdapter.notifyDataSetChanged());
+            }
         });
         // 开始监听好友通话事件
         mSocket.on("friend_converse", (args) -> {
