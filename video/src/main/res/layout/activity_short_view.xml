@@ -7,13 +7,14 @@
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/srl_dynamic"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/iv_add">
 
         <!-- 注意ViewPager2要使用全路径 -->
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/vp2_content"
             android:layout_width="match_parent"
-            android:layout_height="640dp"
+            android:layout_height="match_parent"
             android:orientation="vertical" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

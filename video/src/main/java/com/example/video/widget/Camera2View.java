@@ -50,6 +50,7 @@ public class Camera2View extends TextureView {
     private int mCameraType = CameraCharacteristics.LENS_FACING_BACK; // 摄像头类型
     private OnStopListener mStopListener; // 停止拍摄监听器
     private OnPrepareListener mPrepareListener; // 准备就绪监听器
+    private int mSensorOrientation = 0; // 摄像头方向
 
     public Camera2View(Context context) {
         this(context, null);
@@ -119,6 +120,8 @@ public class Camera2View extends TextureView {
             Log.d(TAG, "mCameraType=" + mCameraType + ", cameraId=" + cameraId);
             // 获取可用相机设备列表
             CameraCharacteristics cc = cm.getCameraCharacteristics(cameraId);
+            mSensorOrientation = cc.get(CameraCharacteristics.SENSOR_ORIENTATION);
+            Log.d(TAG, "mSensorOrientation=" + mSensorOrientation);
             StreamConfigurationMap map = cc.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
             Size largest = Collections.max(Arrays.asList(map.getOutputSizes(ImageFormat.JPEG)),
                     (lhs, rhs) -> Long.signum(lhs.getWidth() * lhs.getHeight() - rhs.getHeight() * rhs.getWidth()));
@@ -184,9 +187,8 @@ public class Camera2View extends TextureView {
             mPreviewBuilder.addTarget(surface); // 把纹理视图添加到预览目标
             // FLASH_MODE_OFF表示关闭闪光灯，FLASH_MODE_TORCH表示开启闪光灯
             mPreviewBuilder.set(CaptureRequest.FLASH_MODE, CaptureRequest.FLASH_MODE_OFF);
-            int rotateDegree = mCameraType==CameraCharacteristics.LENS_FACING_BACK ? 90 : 270;
             // 设置照片的方向
-            mPreviewBuilder.set(CaptureRequest.JPEG_ORIENTATION, rotateDegree);
+            mPreviewBuilder.set(CaptureRequest.JPEG_ORIENTATION, mSensorOrientation);
             // 创建一个相机捕捉会话。此时预览画面既显示于纹理视图，也输出到图像阅读器
             mCameraDevice.createCaptureSession(Arrays.asList(surface, mImageReader.getSurface()),
                     mSessionCallback, mHandler);
@@ -289,9 +291,8 @@ public class Camera2View extends TextureView {
             builder.addTarget(mImageReader.getSurface());
             // FLASH_MODE_OFF表示关闭闪光灯，FLASH_MODE_TORCH表示开启闪光灯
             builder.set(CaptureRequest.FLASH_MODE, CaptureRequest.FLASH_MODE_OFF);
-            // 设置照片的方向
-            int degree = (mCameraType == CameraCharacteristics.LENS_FACING_BACK) ? 90 : 270;
-            builder.set(CaptureRequest.JPEG_ORIENTATION, degree);
+            // 设置照片的方向。红米note手机设置方向会失效，需要在保存照片时另外调整
+            builder.set(CaptureRequest.JPEG_ORIENTATION, mSensorOrientation);
             // 拍照会话开始捕捉相片
             mCameraSession.capture(builder.build(), null, mHandler);
         } catch (CameraAccessException e) {

@@ -49,7 +49,11 @@ public class BitmapUtil {
     public static void saveImage(String path, ByteBuffer buffer, boolean isBack) {
         byte[] data = new byte[buffer.remaining()];
         buffer.get(data);
+        int orientation = CameraUtil.getOrientation(data); // 获取照片的旋转方向
         Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
+        if (orientation != 0) { // 红米note手机设置方向会失效，需要在保存照片时另外调整
+            bitmap = getRotateBitmap(bitmap, orientation);
+        }
         float ratio = 3000f/bitmap.getWidth();
         if (ratio < 1) {
             bitmap = getScaleBitmap(bitmap, ratio);
