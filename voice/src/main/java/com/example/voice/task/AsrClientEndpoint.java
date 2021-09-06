@@ -38,7 +38,7 @@ public class AsrClientEndpoint {
             frame.put("data", data);
             data.put("domain", "general"); // 领域。general(通用)，law(司法)，technology(科技)，medical(医疗)
             data.put("lang", "cn"); // 语言。cn(中文普通话)、en(英语)
-            data.put("format", "mp3"); // 音频格式。支持mp3和pcm
+            data.put("format", "pcm"); // 音频格式。支持mp3和pcm
             data.put("sample", "16k"); // 采样率。16k,8k
             data.put("variable", "true"); // 是否可变结果
             data.put("punctuation", "true"); // 是否开启标点
