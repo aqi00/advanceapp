@@ -38,7 +38,7 @@ public class GlGlobeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_gl_globe);
         initTypeSpinner(); // 初始化类型下拉框
         // 从资源文件中获取平面世界地图的位图对象
-        mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.earth2);
+        mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.mokatuo);
         // 计算球面顶点坐标
         mVertexList = GlVertexUtil.getBallVertexs(mDivide, mRadius);
         // 计算球面材质坐标
@@ -69,6 +69,7 @@ public class GlGlobeActivity extends AppCompatActivity {
             if (mType == 4) {
                 glsv_content.setRenderMode(GLSurfaceView.RENDERMODE_CONTINUOUSLY); // 设置渲染模式
             } else {
+                mAngle = 0;
                 glsv_content.setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY); // 设置渲染模式
                 glsv_content.requestRender(); // 主动请求渲染操作
             }
