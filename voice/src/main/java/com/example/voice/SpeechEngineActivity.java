@@ -3,11 +3,13 @@ package com.example.voice;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,11 +23,13 @@ import java.util.Locale;
 public class SpeechEngineActivity extends AppCompatActivity {
     private final static String TAG = "SpeechEngineActivity";
     private TextToSpeech mSpeech; // 声明一个文字转语音对象
+    private TextView tv_init; // 声明一个文本视图对象
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speech_engine);
+        tv_init = findViewById(R.id.tv_init);
         findViewById(R.id.btn_jump_setting).setOnClickListener(v -> {
             Intent intent = new Intent();
             intent.setAction("com.android.settings.TTS_SETTINGS");
@@ -41,6 +45,7 @@ public class SpeechEngineActivity extends AppCompatActivity {
         // 在初始化完成时触发
         @Override
         public void onInit(int status) {
+            tv_init.setText("系统语音引擎初始化"+((status==TextToSpeech.SUCCESS)?"成功":"失败"));
             if (status == TextToSpeech.SUCCESS) { // 初始化成功
                 if (mEngineList == null) { // 首次初始化
                     // 获取系统支持的所有语音引擎

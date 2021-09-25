@@ -61,4 +61,12 @@
         android:text="打开文本转语音设置页面"
         android:textColor="@color/black"
         android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/tv_init"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:paddingLeft="5dp"
+        android:textColor="@color/black"
+        android:textSize="17sp" />
 </LinearLayout>
