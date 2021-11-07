@@ -11,7 +11,7 @@ public class BookInfo {
     @NonNull // 主键必须是非空字段
     private String fileName; // 书籍名称
     private String author; // 作者
-    private String title; // 出版社
+    private String title; // 标题
     private int pageCount = 0; // 总页数
     public long size; // 文件大小
 
