@@ -213,6 +213,7 @@ public class RobotActivity extends AppCompatActivity {
     // 检查已识别的文本是否为已设定的问题
     private void checkRecognize(boolean isEnd, String text) {
         tv_question.setText("您的问题是："+text);
+        text = text.replace("，", "");
         for (Map.Entry<String, QuestionInfo> item : mQuestionCustomMap.entrySet()) {
             if (text.contains(item.getKey())) { // 匹配用户添加的问题
                 if (!isEnd) { // 尚未结束识别
