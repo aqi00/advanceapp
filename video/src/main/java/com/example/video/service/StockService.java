@@ -82,6 +82,7 @@ public class StockService extends Service {
         // 创建一个GET方式的请求结构
         Request request = new Request.Builder()
                 .header("Accept-Language", "zh-CN") // 给http请求添加头部信息
+                .header("Referer", "https://finance.sina.com.cn") // 给http请求添加头部信息
                 .url(url) // 指定http请求的调用地址
                 .build();
         Call call = client.newCall(request); // 根据请求结构创建调用对象
