@@ -112,6 +112,7 @@ public class BitmapUtil {
         return getScaleBitmap(origin, 1.0/ratio);
     }
 
+    // 通知相册来了张新图片
     public static void notifyPhotoAlbum(Context ctx, String filePath) {
         try {
             String fileName = filePath.substring(filePath.lastIndexOf("/")+1);
