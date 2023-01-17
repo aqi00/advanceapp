@@ -30,7 +30,7 @@ public class FaceView extends ImageView {
     public FaceView(Context context, AttributeSet attrs) {
         super(context, attrs);
         mPaint.setColor(Color.GREEN); // 设置画笔的颜色
-        mPaint.setStyle(Paint.Style.STROKE); // 设置画笔的类型。STROK表示空心，FILL表示实心
+        mPaint.setStyle(Paint.Style.STROKE); // 设置画笔的类型。STROKE表示空心，FILL表示实心
         mPaint.setStrokeWidth(3); // 设置画笔的线宽
     }
 
