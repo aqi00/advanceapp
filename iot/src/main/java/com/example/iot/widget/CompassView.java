@@ -45,7 +45,7 @@ public class CompassView extends View {
         mPaintLine.setAntiAlias(true); // 设置抗锯齿
         mPaintLine.setColor(Color.GREEN); // 设置画笔的颜色
         mPaintLine.setStrokeWidth(2); // 设置画笔的线宽
-        mPaintLine.setStyle(Style.STROKE); // 设置画笔的类型。STROK表示空心，FILL表示实心
+        mPaintLine.setStyle(Style.STROKE); // 设置画笔的类型。STROKE表示空心，FILL表示实心
         // 以下初始化文字的画笔
         mPaintText = new Paint();
         mPaintText.setAntiAlias(true); // 设置抗锯齿
@@ -63,7 +63,7 @@ public class CompassView extends View {
         mPaintSourth.setAntiAlias(true); // 设置抗锯齿
         mPaintSourth.setColor(Color.RED); // 设置画笔的颜色
         mPaintSourth.setStrokeWidth(4); // 设置画笔的线宽
-        mPaintSourth.setStyle(Style.STROKE); // 设置画笔的类型。STROK表示空心，FILL表示实心
+        mPaintSourth.setStyle(Style.STROKE); // 设置画笔的类型。STROKE表示空心，FILL表示实心
         // 从资源图片中获取罗盘背景的位图
         mCompassBg = BitmapFactory.decodeResource(getResources(), R.drawable.compass_bg);
         // 根据位图的宽高创建位图的原始边界
