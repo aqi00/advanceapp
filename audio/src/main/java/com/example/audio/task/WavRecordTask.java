@@ -90,7 +90,7 @@ public class WavRecordTask extends Thread {
         long totalDataLen = totalAudioLen + 36; // 文件总长减去8
         long sampleRate = mFrequence; // 采样频率
         // 采样帧大小。其值为声道数*采样位数/8
-        int frameSize = channels * sampleBits / 2;
+        int frameSize = channels * sampleBits / 8;
         // 数据传输速率，其值为采样频率*采样帧大小
         long byteRate = mFrequence * frameSize;
         byte[] header = new byte[44];
@@ -126,7 +126,7 @@ public class WavRecordTask extends Thread {
         header[29] = (byte) ((byteRate >> 8) & 0xff);
         header[30] = (byte) ((byteRate >> 16) & 0xff);
         header[31] = (byte) ((byteRate >> 24) & 0xff);
-        header[32] = (byte) (channels * sampleBits / 2); // 采样帧大小
+        header[32] = (byte) frameSize; // 采样帧大小
         header[33] = 0;
         header[34] = (byte) sampleBits; // 采样位数，每个样本的位数
         header[35] = 0;
