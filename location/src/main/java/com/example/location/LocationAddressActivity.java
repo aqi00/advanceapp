@@ -40,8 +40,12 @@ public class LocationAddressActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_address);
-        providerMap.put("gps", "卫星定位");
-        providerMap.put("network", "网络定位");
+        providerMap.put(LocationManager.GPS_PROVIDER, "卫星定位");
+        providerMap.put(LocationManager.NETWORK_PROVIDER, "网络定位");
+        providerMap.put(LocationManager.PASSIVE_PROVIDER, "被动定位");
+        if (Build.VERSION.SDK_INT >= 31) {
+            providerMap.put("fused", "融合定位");
+        }
         tv_location = findViewById(R.id.tv_location);
         SwitchUtil.checkLocationIsOpen(this, "需要打开定位功能才能查看定位信息");
     }

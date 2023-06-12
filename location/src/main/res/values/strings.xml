@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">location</string>
+    <string name="file_provider">com.example.location.fileProvider</string>
 </resources>
